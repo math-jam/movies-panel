@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
     maxWidth: 345,
   },
   media: {
-    height: 0,
+    height: '320px',
     paddingTop: '56.25%', // 16:9
   },
   expand: {
@@ -50,15 +50,16 @@ export default function CardMovie() {
       <CardHeader
         avatar={
           <Avatar aria-label="recipe" className={classes.avatar}>
-            D
+            R
           </Avatar>
         }
-        title="Shrimp and Chorizo Paella"
+        title="Resident Evil"
         subheader="September 14, 2016"
       />
       <CardMedia
-        className={classes.media}
-        image="https://semantic-ui.com/images/wireframe/image.png"
+				className={classes.media}
+				image="https://m.media-amazon.com/images/M/MV5BMTc0Mzc2OTQ0Ml5BMl5BanBnXkFtZTgwOTQ5MjE4MDI@._V1_.jpg"
+        // image="https://semantic-ui.com/images/wireframe/image.png"
         title="Paella dish"
       />
       <CardActions disableSpacing>
@@ -78,18 +79,11 @@ export default function CardMovie() {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <Typography paragraph>Method:</Typography>
+					<Typography paragraph>
+					Description:
+					</Typography>
           <Typography paragraph>
-            Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10
-            minutes.
-          </Typography>
-          <Typography paragraph>
-            Heat oil in a (14- to 16-inch) paella pan or a large, deep skillet over medium-high
-            heat. Add chicken, shrimp and chorizo, and cook, stirring occasionally until lightly
-            browned, 6 to 8 minutes. Transfer shrimp to a large plate and set aside, leaving chicken
-            and chorizo in the pan. Add pimentón, bay leaves, garlic, tomatoes, onion, salt and
-            pepper, and cook, stirring often until thickened and fragrant, about 10 minutes. Add
-            saffron broth and remaining 4 1/2 cups chicken broth; bring to a boil.
+						Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
           </Typography>
         </CardContent>
       </Collapse>

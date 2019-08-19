@@ -1,26 +1,96 @@
 import React from 'react';
-import { Nav } from '../../styles'
 import axios from 'axios';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import InputBase from '@material-ui/core/InputBase';
+import { fade, makeStyles } from '@material-ui/core/styles';
+import SearchIcon from '@material-ui/icons/Search';
 
-export default function Navbar() {
+const useStyles = makeStyles(theme => ({
+	root: {
+		flexGrow: 1,
+	},
+	menuButton: {
+		marginRight: theme.spacing(2),
+	},
+	title: {
+		flexGrow: 1,
+		display: 'none',
+		[theme.breakpoints.up('sm')]: {
+			display: 'block',
+		},
+	},
+	search: {
+		position: 'relative',
+		borderRadius: theme.shape.borderRadius,
+		backgroundColor: fade(theme.palette.common.white, 0.15),
+		'&:hover': {
+			backgroundColor: fade(theme.palette.common.white, 0.25),
+		},
+		marginLeft: 0,
+		width: '100%',
+		[theme.breakpoints.up('sm')]: {
+			marginLeft: theme.spacing(1),
+			width: 'auto',
+		},
+	},
+	searchIcon: {
+		width: theme.spacing(7),
+		height: '100%',
+		position: 'absolute',
+		pointerEvents: 'none',
+		display: 'flex',
+		alignItems: 'center',
+		justifyContent: 'center',
+	},
+	inputRoot: {
+		color: 'inherit',
+	},
+	inputInput: {
+		padding: theme.spacing(1, 1, 1, 7),
+		transition: theme.transitions.create('width'),
+		width: '100%',
+		[theme.breakpoints.up('sm')]: {
+			width: 120,
+			'&:focus': {
+				width: 200,
+			},
+		},
+	},
+}));
+
+export default function SearchAppBar() {
 	const key = 'd849a15';
 	const titleMovie = window.location.hash.replace(/%20/gi, "+").replace('#', '')
-  
 	axios.get(`http://www.omdbapi.com/?apikey=${key}&plot=full&type=movie&s=${titleMovie}`)
-	  .then(res => { console.log(res) })
-	  .catch(res => { console.log(res) })
-	  
+		.then(res => { console.log(res) })
+		.catch(res => { console.log(res) })
+
+	const classes = useStyles();
+
 	return (
-		<Nav>
-			<div class="topnav">
-				<a class="active" href="#home">Movies Panel</a>
-				<div class="search-container">
-					<form action="/action_page.php">
-						<input type="text" placeholder="Search.." name="search"/>
-						<button type="submit"><i class="fa fa-search"></i></button>
-					</form>
-				</div>
-			</div>
-		</Nav>
-	)
+		<div className={classes.root}>
+			<AppBar position="static">
+				<Toolbar>
+					<Typography className={classes.title} variant="h6" noWrap>
+						Movies Panel
+          </Typography>
+					<div className={classes.search}>
+						<div className={classes.searchIcon}>
+							<SearchIcon />
+						</div>
+						<InputBase
+							placeholder="What are you looking for?"
+							classes={{
+								root: classes.inputRoot,
+								input: classes.inputInput,
+							}}
+							inputProps={{ 'aria-label': 'search' }}
+						/>
+					</div>
+				</Toolbar>
+			</AppBar>
+		</div>
+	);
 }

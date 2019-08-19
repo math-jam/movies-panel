@@ -1,14 +1,16 @@
 import React from 'react';
 import Navbar from './components/Navbar';
 import CardMovie from './components/Card';
-import { Title } from './styles';
+import Container from '@material-ui/core/Container';
 
 export default function App() {
   return (
     <>
-      {/* Replace for Material UI */}
       <Navbar />
-      <CardMovie />
+      <br />
+      <Container >
+        <CardMovie />
+      </Container>
     </>
   );
 }
